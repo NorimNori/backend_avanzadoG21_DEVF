@@ -9,7 +9,7 @@ const registerUser = asyncHandler(async( req, res ) => {
     const { name, email, password } = req.body
 
     //se verifica que se pasen todos los datos requeridos
-    if(!name || !email || !password){
+    if (!name || !email || !password){
         res.status(400)
         throw new Error('Missing data, please check')
     }
@@ -33,12 +33,12 @@ const registerUser = asyncHandler(async( req, res ) => {
     })
 
     if (user){
-        res.status(200).json({
+        res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email
         })
-    }else{
+    } else { 
         res.status(400)
         throw new Error('Could not save user record')
     }
